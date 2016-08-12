@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html manifest="fixup.appcache" lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>On undoing, fixing, or removing commits in git</title>
+    <title>在git上撤消、修复或删除提交操作</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <style type="text/css">
@@ -58,7 +58,7 @@ var crumbs = new CrumbList();
   </head>
   <body>
     <div id='content'>
-      <h1><a href="http://sethrobertson.github.com/GitFixUm/">On undoing, fixing, or removing commits in git</a></h1>
+      <h1><a href="http://sethrobertson.github.com/GitFixUm/">在git上撤消、修复或删除提交操作</a></h1>
 
     <div name="crumbs"></div>
 
@@ -80,14 +80,13 @@ automatically presented to you if javascript is available) when asking
 for further help, since doing so will explain very precisely what you
 were trying to do, and that you at least tried to help yourself.</p>
 
-<h2>First step</h2>
+<h2>第一步</h2>
 
-<p>Strongly consider taking a
-<a href="http://sethrobertson.github.com/GitBestPractices/#backups">backup</a>
-of your current working directory and .git to avoid any possibility of
-losing data as a result of the use or misuse of these instructions. We
-promise to laugh at you if you fail to take a backup and regret it
-later.</p>
+<p>首先强烈建议你先
+<a href="http://sethrobertson.github.com/GitBestPractices/#backups">备份</a>
+你的工作目录以及.git目录，避免因为后续的操作或误操作造成重要数据的丢失。
+如果你不备份数据，并造成了不可挽回的后果，我们只能幸灾乐祸的看着你。
+</p>
 
 <p>Answer the questions posed by clicking the link for that section.
 A section with no links is a terminal node and you should have solved
@@ -96,11 +95,11 @@ then report the chain of answers you made on #git or some other git
 resource and explain further why the proposed answer doesn't help).
 This is not a document to read linearly.</p>
 
-<p><a href="#start" onclick="crumbs = new CrumbList(); crumbs.output(); return(true);">Proceed to the first question</a></p>
+<p><a href="#start" onclick="crumbs = new CrumbList(); crumbs.output(); return(true);">开始回答第一个问题</a></p>
 
 <p><a name="start" /></p>
 
-<h2>Are you trying to find that which is lost or fix a change that was made?</h2>
+<h2>你想找回一些丢失的代码还是想修正一次错误的操作？</h2>
 
 <p>Due to previous activities (thrashing about), you may have lost
 some work which you would like to find and restore.  Alternately, you
@@ -108,54 +107,54 @@ may have made some changes which you would like to fix.  Fixing
 includes updating, rewording, and deleting or discarding.</p>
 
 <ul>
-<li><a  href="#committedp" onclick="return(crumbs.both('#committedp',this.innerHTML));">Fix a change</a></li>
-<li><a  href="#lostnfound" onclick="return(crumbs.both('#lostnfound',this.innerHTML));">Find what is lost</a></li>
+<li><a  href="#committedp" onclick="return(crumbs.both('#committedp',this.innerHTML));">修正错误操作</a></li>
+<li><a  href="#lostnfound" onclick="return(crumbs.both('#lostnfound',this.innerHTML));">找回丢失的代码</a></li>
 </ul>
 
 
 <p><a name="committedp" /></p><div name="crumbs"></div>
 
-<h2>Have you committed?</h2>
+<h2>你是否已经执行过commit操作？</h2>
 
 <p>If you have not yet committed that which you do not want, git does
 not know anything about what you have done yet, so it is pretty easy
 to undo what you have done.</p>
 
 <ul>
-<li><a  href="#badmerge" onclick="return(crumbs.both('#badmerge',this.innerHTML));">I am in the middle of a bad merge</a></li>
-<li><a  href="#badrebase" onclick="return(crumbs.both('#badrebase',this.innerHTML));">I am in the middle of a bad rebase</a></li>
-<li><a  href="#committed" onclick="return(crumbs.both('#committed',this.innerHTML));">Yes, commits were made</a></li>
-<li><a  href="#uncommitted" onclick="return(crumbs.both('#uncommitted',this.innerHTML));">No, I have not yet committed</a></li>
+<li><a  href="#badmerge" onclick="return(crumbs.both('#badmerge',this.innerHTML));">我在merge过程中遇到了问题</a></li>
+<li><a  href="#badrebase" onclick="return(crumbs.both('#badrebase',this.innerHTML));">我在rebase过程中遇到了问题</a></li>
+<li><a  href="#committed" onclick="return(crumbs.both('#committed',this.innerHTML));">是的，我已经commit了代码</a></li>
+<li><a  href="#uncommitted" onclick="return(crumbs.both('#uncommitted',this.innerHTML));">没有，我还没有commit代码</a></li>
 </ul>
 
 
 <p><a name="uncommitted" /></p><div name="crumbs"></div>
 
-<h2>Discard everything or just some things?</h2>
+<h2>你要抛弃所有的改动还是只想抛弃一部分改动？</h2>
 
 <p>So you have not yet committed, the question is now whether you want
 to undo everything which you have done since the last commit or just
 some things, or just save what you have done?</p>
 
 <ul>
-<li><a  href="#uncommitted_everything" onclick="return(crumbs.both('#uncommitted_everything',this.innerHTML));">Discard everything</a></li>
-<li><a  href="#uncommitted_somethings" onclick="return(crumbs.both('#uncommitted_somethings',this.innerHTML));">Discard some things</a></li>
-<li><a  href="#uncommitted_commit" onclick="return(crumbs.both('#uncommitted_commit,this.innerHTML));">I want to save my changes</a></li>
+<li><a  href="#uncommitted_everything" onclick="return(crumbs.both('#uncommitted_everything',this.innerHTML));">抛弃所有改动</a></li>
+<li><a  href="#uncommitted_somethings" onclick="return(crumbs.both('#uncommitted_somethings',this.innerHTML));">抛弃一部分改动</a></li>
+<li><a  href="#uncommitted_commit" onclick="return(crumbs.both('#uncommitted_commit,this.innerHTML));">我想把我的改动保存下来</a></li>
 </ul>
 
 
 <p><a name="uncommitted_commit" /></p><div name="crumbs"></div>
 
-<h2>How to save uncommitted changes</h2>
+<h2>如何保存尚未commit的改动</h2>
 
 <p>There are five ways you can save your uncommitted change.  I also
 suggest you read <a href="http://git-scm.com/book/">Pro Git</a> as these
 are pretty basic git operations.</p>
 
 <table>
-<tr><th>Description</th><th>Command</th></tr>
-<tr><td>Commit them on the local branch.</td><td><code class="inline">git commit -am "My descriptive message"</code></td></tr>
-<tr><td>Commit them on another branch, no checkout conflicts.</td><td><code class="inline">git checkout otherbranch &amp;&amp; git commit -am "My descriptive message"</code></td></tr>
+<tr><th>描述</th><th>命令</th></tr>
+<tr><td>在本地分支上commit.</td><td><code class="inline">git commit -am "My descriptive message"</code></td></tr>
+<tr><td>在其它分支上commit，无checkout冲突。</td><td><code class="inline">git checkout otherbranch &amp;&amp; git commit -am "My descriptive message"</code></td></tr>
 <tr><td>Commit them on another branch, conflicts.</td><td><code class="inline">git stash; git checkout otherbranch; git stash apply; : "resolve conflicts"; git commit -am "My descriptive message"; git stash drop</code></td></tr>
 <tr><td>Commit them on a new branch.</td><td><code class="inline">git checkout -b newbranch; git commit -am "My descriptive message"</code></td></tr>
 <tr><td>Stash them for a rainy day.</td><td><code class="inline">git stash save "my descriptive name"</code></td></tr>
@@ -168,7 +167,7 @@ reader.</p>
 
 <p><a name="uncommitted_everything" /></p><div name="crumbs"></div>
 
-<h2>How to undo all uncommitted changes</h2>
+<h2>如何撤消所有未提交的改动</h2>
 
 <p>So you have not yet committed and you want to undo everything.
 Well, <a href="http://sethrobertson.github.com/GitBestPractices/">best
@@ -200,7 +199,7 @@ looking at the moribund filenames first.</p>
 
 <p><a name="uncommitted_somethings" /></p><div name="crumbs"></div>
 
-<h2>How to undo some uncommitted changes</h2>
+<h2>如何撤消部分未提交的改动</h2>
 
 <p>So you have not yet committed and you want to undo some things,
 well <code class="inline">git status</code> will tell you exactly what
@@ -261,7 +260,7 @@ safe.)</p>
 
 <p><a name="committed_really" /></p><div name="crumbs"></div>
 
-<h2>Have you pushed?</h2>
+<h2>你push过了吗？</h2>
 
 <p>So you have committed, the question is now whether you have made
 your changes (or at least the changes you are interesting in "fixing")
@@ -288,14 +287,14 @@ cut your seat belts, you can expire the reflog now and garbage collect
 with immediate pruning.</p>
 
 <ul>
-<li><a  href="#pushed" onclick="return(crumbs.both('#pushed',this.innerHTML));">Yes, pushes were made</a></li>
-<li><a  href="#unpushed" onclick="return(crumbs.both('#unpushed',this.innerHTML));">No pushes</a></li>
+<li><a  href="#pushed" onclick="return(crumbs.both('#pushed',this.innerHTML));">已经push过了</a></li>
+<li><a  href="#unpushed" onclick="return(crumbs.both('#unpushed',this.innerHTML));">还没有push</a></li>
 </ul>
 
 
 <p><a name="unpushed" /></p><div name="crumbs"></div>
 
-<h2>Do you want to discard all unpushed changes on this branch?</h2>
+<h2>你想丢弃当前分支上所有尚未push的改动吗？</h2>
 
 <p>There is a shortcut in case you want to discard all changes made on
 this branch since you have last pushed or in any event, to make your
@@ -399,7 +398,7 @@ the <code class="inline">git reset</code>.</p>
 
 <p><a name="rework_last" /></p><div name="crumbs"></div>
 
-<h2>Reworking the last commit</h2>
+<h2>修改最后一次commit</h2>
 
 <p><b>WARNING:</b> These techniques should <em>only</em> be used for
 non-merge commits.  If you have a merge commit, you are better off
@@ -427,7 +426,7 @@ Production Editing Using Git</a>.</p>
 
 <p><a name="move_commit" /></p><div name="crumbs"></div>
 
-<h2>Moving a commit from one branch to another</h2>
+<h2>把一次commit从一个分支移动到另一个分支</h2>
 
 <p>So, you have a commit which is in the wrong place and you want to
 move it from one branch to another.  In order to do this, you will
@@ -1059,7 +1058,7 @@ those other commits over.</p>
 
 <p><a name="badmerge" /></p><div name="crumbs"></div>
 
-<h2>Recovering from a borked/stupid/moribund merge</h2>
+<h2>从一次失败的/愚蠢的/混乱的merge操作中恢复</h2>
 
 <p>So, you were in the middle of a merge, have encountered one or more
 conflicts, and you have now decided that it was a big mistake and want
@@ -1070,7 +1069,7 @@ to get out of the merge.</p>
 
 <p><a name="badrebase" /></p><div name="crumbs"></div>
 
-<h2>Recovering from a borked/stupid/moribund rebase</h2>
+<h2>从一次失败的/愚蠢的/混乱的rebase操作中恢复</h2>
 
 <p>So, you were in the middle of a rebase, have encountered one or more
 conflicts, and you have now decided that it was a big mistake and want
@@ -1081,7 +1080,7 @@ to get out of the merge.</p>
 
 <p><a name="disclaimer" /></p><div name="crumbs"></div>
 
-<h2>Disclaimer</h2>
+<h2>免责声明</h2>
 
 <p>Information is not promised or guaranteed to be correct, current, or
 complete, and may be out of date and may contain technical
@@ -1095,7 +1094,7 @@ related to any and all matters described.</p>
 
 <p><a name="copyright" /></p><div name="crumbs"></div>
 
-<h2>Copyright</h2>
+<h2>版权</h2>
 
 <p>Copyright ⓒ 2012 Seth Robertson</p>
 
@@ -1121,14 +1120,14 @@ merge errors to my taste.</p>
 
 <p><a name="thanks" /></p><div name="crumbs"></div>
 
-<h2>Thanks</h2>
+<h2>致谢</h2>
 
 <p>Thanks to the experts on #git and my coworkers for review, feedback,
 and ideas.</p>
 
 <p><a name="comments" /></p><div name="crumbs"></div>
 
-<h2>Comments</h2>
+<h2>建议</h2>
 
 <p>Comments and improvements welcome.</p>
 
